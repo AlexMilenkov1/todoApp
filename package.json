@@ -1,12 +1,20 @@
 {
   "name": "js-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full stcak todo application that uses SQLite DATABASE, NODE JS backend and JWT authentication",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "node --watch --env-file=.env ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.2.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
+  }
 }

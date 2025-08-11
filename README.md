@@ -1,4 +1,6 @@
-# FULL STACK APPLICATION - Node.JS Express.JS Prisma PostgreSQL & Docker
+# FULL STACK APPLICATION - Node.JS, Express.JS, Prisma, PostgreSQL, Docker, Render, JWT TOKEN
+
+**Live demo:** [Click here to open the app]([YOUR_APP_URL_HERE](https://todoapp-e2fb.onrender.com))
 
 This guide provides an overview of the codebase, the functionality of the app, and detailed instructions on how to set up and run the app. Make sure to follow all steps carefully, especially regarding Node.js version requirements.
 

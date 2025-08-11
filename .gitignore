@@ -1,3 +1,4 @@
 /.env
 /todo-app.rest
 /node_modules
+/src/generated/prisma

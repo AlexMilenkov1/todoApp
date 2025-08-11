@@ -32,10 +32,9 @@ router.post('/register', (req, res) => {
         res.json({ token })
 
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).json({ error: error.message });
     }
-
 
 })
 
@@ -51,19 +50,17 @@ router.post('/login', (req, res) => {
         const user = findUser.get(username)
 
         if (!user) {
-            return res.status(400).send({message: 'User not found!'})
+            return res.status(400).send({ message: 'User not found!' })
         }
 
         const isPasswordValid = bcrypt.compareSync(password, user.password)
 
         if (!isPasswordValid) {
-            return res.status(401).send({message: 'Please enter a valid passwod!'})
+            return res.status(401).send({ message: 'Please enter a valid passwod!' })
         }
 
-        console.log(user);
-        
-        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '24h'})
-        res.json({token})
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token })
 
     } catch (error) {
         console.log(error);

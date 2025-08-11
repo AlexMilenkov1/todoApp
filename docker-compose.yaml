@@ -3,30 +3,13 @@ services:
     build: .
     container_name: todo-app
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/todoapp
+      - DATABASE_URL=postgresql://todoapp_db_bfu3_user:FwNPo4TNNW7dmFShGQDpaAu2dkDFF5kJ@dpg-d2csv4buibrs738rdg10-a.frankfurt-postgres.render.com/todoapp_db_bfu3
       - JWT_SECRET=wdawfga+24sa=fafvdfaWf2341541fq2br
       - NODE_ENV=development
       - PORT=5000
     ports:
       - "5000:5000"
-    depends_on:
-      - db
     volumes:
       - .:/app
-      - /app/node_modules  # <-- Add this line to keep node_modules from image
-    command: sh -c "npx prisma generate && node ./src/server.js" # run generate before starting app
-
-  db:
-    image: postgres:13-alpine
-    container_name: postgres-db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: todoapp
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-volumes:
-  postgres-data:
+      - /app/node_modules
+    command: sh -c "npx prisma migrate deploy && npx prisma generate && node ./src/server.js"
